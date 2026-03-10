@@ -1,0 +1,18 @@
+[project]
+name = "dotnet-todo-mcp"
+version = "0.1.0"
+description = "A todo MCP server built with FastMCP"
+requires-python = ">=3.11"
+dependencies = [
+    "fastmcp",
+]
+
+[project.scripts]
+todo-mcp = "server:main"
+
+[tool.hatch.build.targets.wheel]
+include = ["server.py"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
