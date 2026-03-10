@@ -50,7 +50,11 @@ Add to your MCP client config (e.g. Claude Desktop `claude_desktop_config.json`)
   "mcpServers": {
     "todo": {
       "command": "uvx",
-      "args": ["dotnet-todo-mcp"]
+      "args": [
+        "--from",
+        "dotnet-todo-mcp",
+        "todo-mcp"
+      ]
     }
   }
 }
