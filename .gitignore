@@ -5,3 +5,6 @@ __pycache__/
 .python-version
 dist/
 *.egg-info/
+
+skills/**
+settings.local.json
