@@ -61,15 +61,17 @@ Add to your MCP client config (e.g. Claude Desktop `claude_desktop_config.json`)
 }
 ```
 
-Or using `uv run`:
+**Recommended** — using `uv run --project` (works from any directory, no build step):
 
 ```json
 {
   "mcpServers": {
     "todo": {
       "command": "uv",
-      "args": ["run", "--project", "/path/to/dotnet-todo-mcp", "python", "server.py"]
+      "args": ["run", "--project", "/path/to/dotnet-todo-mcp", "todo-mcp"]
     }
   }
 }
 ```
+
+> Note: `uvx --from <local-path>` requires a built wheel. Use `uv run --project` instead for local source directories.
