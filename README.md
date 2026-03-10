@@ -1,6 +1,6 @@
 # dotnet-todo-mcp
 
-A FastMCP server that exposes the [`dotnet-todo`](https://github.com/bjnortier/dotnet-todo) CLI (a Todo.txt port) as MCP tools, making your todo list accessible to AI assistants via the Model Context Protocol.
+A FastMCP server that exposes the [`dotnet-todo`](https://github.com/rprouse/dotnet-todo) CLI (a Todo.txt port) as MCP tools, making your todo list accessible to AI assistants via the Model Context Protocol.
 
 ## Prerequisites
 
@@ -10,24 +10,19 @@ Install the `todo` CLI (.NET global tool):
 dotnet tool install -g dotnet-todo
 ```
 
-Install Python dependencies:
+## Running the Server
+
+**Via uvx** (from PyPI):
+
+```bash
+uvx dotnet-todo-mcp
+```
+
+**Local development** (from the project directory):
 
 ```bash
 uv sync
-```
-
-## Running the Server
-
-**Stdio mode** (used by MCP clients):
-
-```bash
 uv run python server.py
-```
-
-**Via uvx** (after `uv sync`):
-
-```bash
-uvx --from . todo-mcp
 ```
 
 ## Tools
@@ -55,13 +50,13 @@ Add to your MCP client config (e.g. Claude Desktop `claude_desktop_config.json`)
   "mcpServers": {
     "todo": {
       "command": "uvx",
-      "args": ["--from", "/path/to/dotnet-todo-mcp", "todo-mcp"]
+      "args": ["dotnet-todo-mcp"]
     }
   }
 }
 ```
 
-**Recommended** — using `uv run --project` (works from any directory, no build step):
+**Local development** — point at your local clone:
 
 ```json
 {
@@ -74,4 +69,4 @@ Add to your MCP client config (e.g. Claude Desktop `claude_desktop_config.json`)
 }
 ```
 
-> Note: `uvx --from <local-path>` requires a built wheel. Use `uv run --project` instead for local source directories.
+This requires that you run `uv sync` first.
